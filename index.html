@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我有话想跟学长说</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #facd68, #fc76b3);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            transition: all 0.5s;
+        }
+        h5 {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            transition: all 0.5s;
+        }
+
+        h1:hover {
+            color: #ffffff;
+            background-position: 100%;
+            background-size: 100% 200%;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #6a11cb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #4d00ee;
+        }
+    </style>
+</head>
+<body>
+    <h1>我有话想跟学长说</h1>
+    <h5>(ps:绝对不会告诉老师！)</h5>
+    <form>
+        <p>请输入你的姓名：</p>
+        <input type="text" id="name" placeholder="例如：王小美">
+        <p>请输入你的电话号码：</p>
+        <input type="text" id="phone" placeholder="例如：13812345678">
+        <p>请输入你想说的话：</p>
+        <input type="text" id="text" placeholder="例如：同班的李小明给我的生活带来困扰。。。">
+        <p><button type="button" onclick="submitForm()">提交</button></p>
+    </form>
+    <script>
+        function submitForm() {
+
+// 获取电话号码和文本内容
+var name = document.getElementById("name").value;
+var phone = document.getElementById("phone").value;
+var text = document.getElementById("text").value;
+// 创建一个XMLHttpRequest对象
+if(text!=""){var xhr = new XMLHttpRequest();
+// 设置请求的方法和地址
+xhr.open("POST", "https://xizhi.qqoq.net/XZe6a4fdbdc740f182c6b39c8593b445f2.channel");
+// 设置请求头
+xhr.setRequestHeader("Content-Type", "application/json");
+// 设置请求的回调函数
+xhr.onreadystatechange = function() {
+// 如果请求成功
+if (xhr.readyState == 4 && xhr.status == 200) {
+// 显示返回的结果
+alert(xhr.responseText);
+window.close()
+}
+};
+// 发送请求，将电话号码和文本内容转换为JSON格式的字符串
+xhr.send(JSON.stringify({title:name, content: "电话："+phone+"  \n内容："+text}));
+}else{alert("内容不能为空哦！");location.reload()}
+        }
+    </script>
+</body>
+</html>
